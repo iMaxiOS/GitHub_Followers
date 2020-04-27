@@ -14,4 +14,9 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemRed
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
 }

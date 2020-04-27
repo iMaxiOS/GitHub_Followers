@@ -13,6 +13,7 @@
 		AC0A507F2457535C00751976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0A507D2457535C00751976 /* LaunchScreen.storyboard */; };
 		AC0A508724575A1F00751976 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A508624575A1F00751976 /* SearchVC.swift */; };
 		AC0A508924575A3B00751976 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A508824575A3B00751976 /* FavoritesListVC.swift */; };
+		AC0A508B24575CB900751976 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A508A24575CB900751976 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AC0A50802457535C00751976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC0A508624575A1F00751976 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		AC0A508824575A3B00751976 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
+		AC0A508A24575CB900751976 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,24 @@
 		AC0A50712457535900751976 /* GitHub_Followers */ = {
 			isa = PBXGroup;
 			children = (
+				AC0A508C24575E4700751976 /* Controllers */,
 				AC0A50722457535900751976 /* AppDelegate.swift */,
 				AC0A50742457535900751976 /* SceneDelegate.swift */,
 				AC0A507B2457535C00751976 /* Assets.xcassets */,
 				AC0A507D2457535C00751976 /* LaunchScreen.storyboard */,
 				AC0A50802457535C00751976 /* Info.plist */,
-				AC0A508624575A1F00751976 /* SearchVC.swift */,
-				AC0A508824575A3B00751976 /* FavoritesListVC.swift */,
 			);
 			path = GitHub_Followers;
+			sourceTree = "<group>";
+		};
+		AC0A508C24575E4700751976 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A508624575A1F00751976 /* SearchVC.swift */,
+				AC0A508824575A3B00751976 /* FavoritesListVC.swift */,
+				AC0A508A24575CB900751976 /* BaseViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0A508B24575CB900751976 /* BaseViewController.swift in Sources */,
 				AC0A508924575A3B00751976 /* FavoritesListVC.swift in Sources */,
 				AC0A508724575A1F00751976 /* SearchVC.swift in Sources */,
 				AC0A50732457535900751976 /* AppDelegate.swift in Sources */,
