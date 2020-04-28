@@ -20,6 +20,7 @@ class SearchVC: UIViewController {
         
         configure()
         addConstraints()
+        createDismissTapGestureRecognized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +33,11 @@ class SearchVC: UIViewController {
         view.addSubview(nameTextField)
         view.addSubview(getButton)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func createDismissTapGestureRecognized() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
     
     private func addConstraints() {
