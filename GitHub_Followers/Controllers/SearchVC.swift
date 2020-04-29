@@ -13,6 +13,10 @@ class SearchVC: UIViewController {
     private let imageView = UIImageView(image: #imageLiteral(resourceName: "gh-logo"))
     private let nameTextField = GFTextField()
     private let getButton = GFButton(bgColor: .systemGreen, title: "Get Followers")
+    
+    private var isUsernameEntered: Bool {
+        return nameTextField.text?.isEmpty ?? false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +51,11 @@ class SearchVC: UIViewController {
     }
     
     @objc func handlePush() {
+        if isUsernameEntered {
+            print("No Username")
+            return
+        }
+        
         let followerListVC = FallowerListVC()
         followerListVC.userName = nameTextField.text
         followerListVC.title = nameTextField.text
