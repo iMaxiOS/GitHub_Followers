@@ -52,7 +52,7 @@ class SearchVC: UIViewController {
     
     @objc func handlePush() {
         if isUsernameEntered {
-            print("No Username")
+            presentGFAlertOnMain(title: "Empty Username", body: "Please enter a username. We need to know who look for us 😀.", titleButton: "OK")
             return
         }
         
