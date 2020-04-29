@@ -16,6 +16,7 @@
 		AC0A508B24575CB900751976 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A508A24575CB900751976 /* BaseViewController.swift */; };
 		AC0A508E245764D000751976 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A508D245764D000751976 /* GFButton.swift */; };
 		AC0A5090245767E300751976 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A508F245767E300751976 /* GFTextField.swift */; };
+		AC9560BF2458B0D7006311DB /* FallowerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9560BE2458B0D7006311DB /* FallowerListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AC0A508A24575CB900751976 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AC0A508D245764D000751976 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		AC0A508F245767E300751976 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		AC9560BE2458B0D7006311DB /* FallowerListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallowerListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +79,10 @@
 		AC0A508C24575E4700751976 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AC0A508624575A1F00751976 /* SearchVC.swift */,
-				AC0A508824575A3B00751976 /* FavoritesListVC.swift */,
 				AC0A508A24575CB900751976 /* BaseViewController.swift */,
+				AC0A508824575A3B00751976 /* FavoritesListVC.swift */,
+				AC9560BE2458B0D7006311DB /* FallowerListVC.swift */,
+				AC0A508624575A1F00751976 /* SearchVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9560BF2458B0D7006311DB /* FallowerListVC.swift in Sources */,
 				AC0A508B24575CB900751976 /* BaseViewController.swift in Sources */,
 				AC0A508924575A3B00751976 /* FavoritesListVC.swift in Sources */,
 				AC0A508E245764D000751976 /* GFButton.swift in Sources */,

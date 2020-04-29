@@ -19,6 +19,7 @@ class SearchVC: UIViewController {
         view.backgroundColor = .systemBackground
         
         configure()
+        configureGetButton()
         addConstraints()
         createDismissTapGestureRecognized()
     }
@@ -33,6 +34,7 @@ class SearchVC: UIViewController {
         view.addSubview(nameTextField)
         view.addSubview(getButton)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        nameTextField.delegate = self
     }
     
     private func createDismissTapGestureRecognized() {
@@ -40,9 +42,20 @@ class SearchVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    private func configureGetButton() {
+        getButton.addTarget(self, action: #selector(handlePush), for: .touchUpInside)
+    }
+    
+    @objc func handlePush() {
+        let followerListVC = FallowerListVC()
+        followerListVC.userName = nameTextField.text
+        followerListVC.title = nameTextField.text
+        navigationController?.pushViewController(followerListVC, animated: true)
+    }
+    
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: view.frame.width * 0.5),
             imageView.heightAnchor.constraint(equalToConstant: view.frame.width * 0.5),
@@ -53,12 +66,17 @@ class SearchVC: UIViewController {
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             nameTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            getButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            getButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             getButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             getButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             getButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    
+}
+
+extension SearchVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handlePush()
+        return true
+    }
 }
