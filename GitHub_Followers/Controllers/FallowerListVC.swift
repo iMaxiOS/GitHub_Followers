@@ -16,6 +16,10 @@ class FallowerListVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        NetworkManager.shared.getFollowers(for: userName, page: 1) { result in
+            print(result)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
