@@ -12,15 +12,38 @@ class FollowerCell: UICollectionViewCell {
     
     static var cellId = "FollowerCell"
     
-    private let avatarImageView = UIImageView()
+    private let avatarImageView = GFImageView(frame: .zero)
     private let nameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16, weight: .heavy)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public func set(follower: Follower) {
+        nameLabel.text = follower.login
+        avatarImageView.image = UIImage(named: follower.avatarUrl)
+    }
+    
+    private func configure() {
+        addSubview(avatarImageView)
+        addSubview(nameLabel)
+        
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            avatarImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
+            
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        ])
+    }
+    
 }

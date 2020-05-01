@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC08F509245C29570090DA88 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08F508245C29570090DA88 /* FollowerCell.swift */; };
+		AC08F50B245C2B020090DA88 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08F50A245C2B020090DA88 /* GFImageView.swift */; };
 		AC0A50732457535900751976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A50722457535900751976 /* AppDelegate.swift */; };
 		AC0A50752457535900751976 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A50742457535900751976 /* SceneDelegate.swift */; };
 		AC0A507C2457535C00751976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0A507B2457535C00751976 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		AC08F508245C29570090DA88 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
+		AC08F50A245C2B020090DA88 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
 		AC0A506F2457535900751976 /* GitHub_Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHub_Followers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0A50722457535900751976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC0A50742457535900751976 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				AC0A508F245767E300751976 /* GFTextField.swift */,
 				AC8C853C2459EB4C005287A3 /* GFTitleLabel.swift */,
 				AC8C85402459EE8D005287A3 /* GFBodyLabel.swift */,
+				AC08F50A245C2B020090DA88 /* GFImageView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				AC8C85452459FB63005287A3 /* UIViewController+Ext.swift in Sources */,
 				AC0A508924575A3B00751976 /* FavoritesListVC.swift in Sources */,
 				AC0A508E245764D000751976 /* GFButton.swift in Sources */,
+				AC08F50B245C2B020090DA88 /* GFImageView.swift in Sources */,
 				AC0A508724575A1F00751976 /* SearchVC.swift in Sources */,
 				AC4873ED245AEA3400D56E65 /* User.swift in Sources */,
 				AC08F509245C29570090DA88 /* FollowerCell.swift in Sources */,
