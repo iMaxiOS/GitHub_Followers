@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC08F509245C29570090DA88 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08F508245C29570090DA88 /* FollowerCell.swift */; };
 		AC0A50732457535900751976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A50722457535900751976 /* AppDelegate.swift */; };
 		AC0A50752457535900751976 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A50742457535900751976 /* SceneDelegate.swift */; };
 		AC0A507C2457535C00751976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0A507B2457535C00751976 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC08F508245C29570090DA88 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		AC0A506F2457535900751976 /* GitHub_Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHub_Followers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0A50722457535900751976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC0A50742457535900751976 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC08F507245C29380090DA88 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AC08F508245C29570090DA88 /* FollowerCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		AC0A50662457535900751976 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		AC4873E6245AE36500D56E65 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				AC08F507245C29380090DA88 /* Cells */,
 				AC8C85422459EF61005287A3 /* GFAlertVC.swift */,
 				AC0A508D245764D000751976 /* GFButton.swift */,
 				AC0A508F245767E300751976 /* GFTextField.swift */,
@@ -236,6 +247,7 @@
 				AC0A508E245764D000751976 /* GFButton.swift in Sources */,
 				AC0A508724575A1F00751976 /* SearchVC.swift in Sources */,
 				AC4873ED245AEA3400D56E65 /* User.swift in Sources */,
+				AC08F509245C29570090DA88 /* FollowerCell.swift in Sources */,
 				AC8C85432459EF61005287A3 /* GFAlertVC.swift in Sources */,
 				AC4873EB245AE9D200D56E65 /* Follower.swift in Sources */,
 				AC0A50732457535900751976 /* AppDelegate.swift in Sources */,

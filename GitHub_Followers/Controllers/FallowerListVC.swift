@@ -18,7 +18,13 @@ class FallowerListVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { result in
-            print(result)
+            
+            switch result {
+            case .success(let fallowers):
+                print(fallowers)
+            case .failure(let error):
+                self.presentGFAlertOnMain(title: "user name not found", body: error.rawValue, titleButton: "OK")
+            }
         }
     }
     
