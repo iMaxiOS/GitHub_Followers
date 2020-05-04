@@ -11,7 +11,8 @@ import UIKit
 class GFImageView: UIImageView {
     
     private let placeholderImage = UIImage(named: "avatar-placeholder")!
-
+    let imageCache = NetworkManager.shared.cache
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -28,20 +29,28 @@ class GFImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func downloadImage(url urlString: String) {
+    func downloadImage(from urlString: String) {
+        
+        let cacheKey = NSString(string: urlString)
+        if let image = imageCache.object(forKey: cacheKey) {
+            self.image = image
+            return
+        }
+        
         guard let url = URL(string: urlString) else { return }
-        let session = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             if error != nil { return }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
             guard let data = data else { return }
             
             guard let image = UIImage(data: data) else { return }
-            DispatchQueue.main.async {
-                self.image = image
-            }
+            self.imageCache.setObject(image, forKey: cacheKey)
+            
+            DispatchQueue.main.async { self.image = image }
         }
-        session.resume()
+        
+        task.resume()
     }
 }

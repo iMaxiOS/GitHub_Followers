@@ -6,11 +6,12 @@
 //  Copyright © 2020 Maxim Granchenko. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    public let cache = NSCache<NSString, UIImage>()
     
     private init() {}
     
