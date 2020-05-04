@@ -11,6 +11,8 @@ import UIKit
 class FallowerListVC: UIViewController {
     
     private var follower: [Follower] = []
+    private var page = 1
+    private var hasMoreFollower = true
     
     enum Section {
         case main
@@ -24,7 +26,7 @@ class FallowerListVC: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureViewController()
-        getFollowers()
+        getFollowers(username: userName, page: page)
         configureDataSource()
     }
     
@@ -36,6 +38,7 @@ class FallowerListVC: UIViewController {
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColums())
         view.addSubview(collectionView)
+        collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.cellId)
         
@@ -77,17 +80,29 @@ class FallowerListVC: UIViewController {
         }
     }
     
-    private func getFollowers() {
-        NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] result in
+    private func getFollowers(username: String, page: Int) {
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let followers):
-                print(followers)
-                self.follower = followers
+                if followers.count < 100 { self.hasMoreFollower = false }
+                self.follower.append(contentsOf: followers)
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "user name not found", body: error.rawValue, titleButton: "OK")
             }
+        }
+    }
+}
+
+extension FallowerListVC: UICollectionViewDelegate {
+    
+    //so that there is no request to the server you need to call .. guard hasMoreFollower else { return }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height {
+            guard hasMoreFollower else { return }
+            page += 1
+            getFollowers(username: userName, page: page)
         }
     }
 }
