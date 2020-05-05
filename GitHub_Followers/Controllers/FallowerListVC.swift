@@ -25,6 +25,7 @@ class FallowerListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        configureSearchController()
         configureViewController()
         getFollowers(username: userName, page: page)
         configureDataSource()
@@ -61,6 +62,13 @@ class FallowerListVC: UIViewController {
         flowlayout.itemSize = .init(width: itemSize, height: itemSize + 40)
         
         return flowlayout
+    }
+    
+    private func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search user name"
+        navigationItem.searchController = searchController
     }
     
     private func configureDataSource() {
@@ -116,5 +124,12 @@ extension FallowerListVC: UICollectionViewDelegate {
             page += 1
             getFollowers(username: userName, page: page)
         }
+    }
+}
+
+extension FallowerListVC: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }
