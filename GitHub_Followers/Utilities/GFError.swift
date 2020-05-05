@@ -1,8 +1,8 @@
 //
-//  NetworkManager.swift
+//  GFError.swift
 //  GitHub_Followers
 //
-//  Created by Maxim Granchenko on 30.04.2020.
+//  Created by Maxim Granchenko on 05.05.2020.
 //  Copyright © 2020 Maxim Granchenko. All rights reserved.
 //
 
