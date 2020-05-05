@@ -89,7 +89,17 @@ class FallowerListVC: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollower = false }
                 self.follower.append(contentsOf: followers)
+                
+                if followers.isEmpty {
+                    let message = "This user doesn`t have any followers. Let`s go follower them 🙂"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(message: message, in: self.view)
+                    }
+                    return
+                }
+                
                 self.updateData()
+                
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "user name not found", body: error.rawValue, titleButton: "OK")
             }
