@@ -10,7 +10,8 @@ import UIKit
 
 class FallowerListVC: UIViewController {
     
-    private var follower: [Follower] = []
+    private var followers: [Follower] = []
+    private var filteredFollower: [Follower] = []
     private var page = 1
     private var hasMoreFollower = true
     
@@ -67,7 +68,9 @@ class FallowerListVC: UIViewController {
     private func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search user name"
+        searchController.searchBar.placeholder = "Search for a user name"
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
     }
     
@@ -79,7 +82,7 @@ class FallowerListVC: UIViewController {
         })
     }
     
-    private func updateData() {
+    private func updateData(on follower: [Follower]) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapShot.appendSections([.main])
         snapShot.appendItems(follower)
@@ -96,7 +99,7 @@ class FallowerListVC: UIViewController {
             switch result {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollower = false }
-                self.follower.append(contentsOf: followers)
+                self.followers.append(contentsOf: followers)
                 
                 if followers.isEmpty {
                     let message = "This user doesn`t have any followers. Let`s go follower them 🙂"
@@ -106,7 +109,7 @@ class FallowerListVC: UIViewController {
                     return
                 }
                 
-                self.updateData()
+                self.updateData(on: self.followers)
                 
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "user name not found", body: error.rawValue, titleButton: "OK")
@@ -127,9 +130,16 @@ extension FallowerListVC: UICollectionViewDelegate {
     }
 }
 
-extension FallowerListVC: UISearchResultsUpdating {
+extension FallowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
         
+        filteredFollower = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+        updateData(on: filteredFollower)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updateData(on: followers)
     }
 }
