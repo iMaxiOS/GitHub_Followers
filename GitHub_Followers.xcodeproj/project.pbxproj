@@ -32,6 +32,7 @@
 		ACAA601A2461AA7300395A45 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA60192461AA7300395A45 /* GFUserInfoHeaderVC.swift */; };
 		ACAA601C2461AFFC00395A45 /* GFHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601B2461AFFC00395A45 /* GFHStackView.swift */; };
 		ACAA601E2461B02000395A45 /* GFVStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601D2461B02000395A45 /* GFVStackView.swift */; };
+		ACAA60202461B80A00395A45 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		ACAA60192461AA7300395A45 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		ACAA601B2461AFFC00395A45 /* GFHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFHStackView.swift; sourceTree = "<group>"; };
 		ACAA601D2461B02000395A45 /* GFVStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFVStackView.swift; sourceTree = "<group>"; };
+		ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				AC0A508F245767E300751976 /* GFTextField.swift */,
 				AC8C853C2459EB4C005287A3 /* GFTitleLabel.swift */,
 				AC8C85402459EE8D005287A3 /* GFBodyLabel.swift */,
+				ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */,
 				AC08F50A245C2B020090DA88 /* GFImageView.swift */,
 				ACAA60192461AA7300395A45 /* GFUserInfoHeaderVC.swift */,
 				ACAA601B2461AFFC00395A45 /* GFHStackView.swift */,
@@ -271,6 +274,7 @@
 				AC8C85432459EF61005287A3 /* GFAlertVC.swift in Sources */,
 				ACAA601A2461AA7300395A45 /* GFUserInfoHeaderVC.swift in Sources */,
 				AC4873EB245AE9D200D56E65 /* Follower.swift in Sources */,
+				ACAA60202461B80A00395A45 /* GFSecondaryTitleLabel.swift in Sources */,
 				ACAA601C2461AFFC00395A45 /* GFHStackView.swift in Sources */,
 				ACAA601E2461B02000395A45 /* GFVStackView.swift in Sources */,
 				ACAA60122461641E00395A45 /* GFEmptyUsersVC.swift in Sources */,
