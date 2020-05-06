@@ -11,6 +11,10 @@ import UIKit
 class UserInfoVC: UIViewController {
     
     private let headerView = UIView()
+    private let itemMiddleView = UIView()
+    private let itemBottomView = UIView()
+    private var itemsView: [UIView] = []
+    
     public var username: String!
 
     override func viewDidLoad() {
@@ -38,14 +42,32 @@ class UserInfoVC: UIViewController {
     }
     
     func layoutUI() {
-        view.addSubview(headerView)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        itemsView = [headerView, itemMiddleView, itemBottomView]
+        
+        for itemView in itemsView {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        itemBottomView.backgroundColor = .red
+        itemMiddleView.backgroundColor = .black
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            headerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemMiddleView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
+            itemMiddleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            itemMiddleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            itemMiddleView.heightAnchor.constraint(equalToConstant: 140),
+            
+            itemBottomView.topAnchor.constraint(equalTo: itemMiddleView.bottomAnchor, constant: 20),
+            itemBottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            itemBottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            itemBottomView.heightAnchor.constraint(equalToConstant: 140)
+            
         ])
     }
     
