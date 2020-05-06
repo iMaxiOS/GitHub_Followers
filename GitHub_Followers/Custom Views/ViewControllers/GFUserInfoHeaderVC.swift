@@ -19,17 +19,14 @@ class GFUserInfoHeaderVC: UIViewController {
     
     var user: User!
     
-    
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +34,6 @@ class GFUserInfoHeaderVC: UIViewController {
         layoutUI()
         configureUIElements()
     }
-    
     
     func configureUIElements() {
         avatarImageView.downloadImage(from: user.avatarUrl)
@@ -51,7 +47,6 @@ class GFUserInfoHeaderVC: UIViewController {
         locationImageView.tintColor = .secondaryLabel
     }
     
-    
     func addSubviews() {
         view.addSubview(avatarImageView)
         view.addSubview(usernameLabel)
@@ -60,7 +55,6 @@ class GFUserInfoHeaderVC: UIViewController {
         view.addSubview(locationLabel)
         view.addSubview(bioLabel)
     }
-    
     
     func layoutUI() {
         let padding: CGFloat            = 20

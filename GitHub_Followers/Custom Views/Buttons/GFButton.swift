@@ -31,6 +31,11 @@ class GFButton: UIButton {
         configure()
     }
     
+    public func customSet(bg: UIColor, title: String) {
+        self.backgroundColor = bg
+        self.setTitle(title, for: .normal)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
