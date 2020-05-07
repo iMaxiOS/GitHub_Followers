@@ -16,12 +16,14 @@ class GFItemInfoVC: UIViewController {
     public let actionButton = GFButton()
     
     public var user: User!
+    weak var delegate: UserInfoVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
         configureBackgroundView()
         configureStackView()
+        configureActionButton()
     }
     
     init(user: User) {
@@ -37,6 +39,12 @@ class GFItemInfoVC: UIViewController {
         view.layer.cornerRadius = 18
         view.backgroundColor = .secondarySystemBackground
     }
+    
+    private func configureActionButton() {
+        actionButton.addTarget(self, action: #selector(handleActionButton), for: .touchUpInside)
+    }
+    
+    @objc func handleActionButton() {}
     
     private func layoutUI() {
         view.addSubview(vStackView)

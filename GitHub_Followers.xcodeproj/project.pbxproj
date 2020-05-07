@@ -143,9 +143,11 @@
 		AC0E86862462FA9C00A28C26 /* ItemInfoVCs */ = {
 			isa = PBXGroup;
 			children = (
-				AC0E867E2462DFB000A28C26 /* GFItemInfoView.swift */,
+				AC0E86802462E98800A28C26 /* GFItemInfoVC.swift */,
 				AC0E86822462F4EE00A28C26 /* GFRepoItemVC.swift */,
 				AC0E86842462F9E700A28C26 /* GFFollowerItemVC.swift */,
+				ACAA60112461641E00395A45 /* GFEmptyUsersVC.swift */,
+				AC0E867E2462DFB000A28C26 /* GFItemInfoView.swift */,
 			);
 			path = ItemInfoVCs;
 			sourceTree = "<group>";
@@ -154,9 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAA60192461AA7300395A45 /* GFUserInfoHeaderVC.swift */,
-				ACAA60112461641E00395A45 /* GFEmptyUsersVC.swift */,
 				AC8C85422459EF61005287A3 /* GFAlertVC.swift */,
-				AC0E86802462E98800A28C26 /* GFItemInfoVC.swift */,
 				AC0E86862462FA9C00A28C26 /* ItemInfoVCs */,
 			);
 			path = ViewControllers;

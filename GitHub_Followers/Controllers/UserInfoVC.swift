@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol UserInfoVCDelegate: class {
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
 class UserInfoVC: UIViewController {
     
     private var itemsView: [UIView] = []
@@ -16,9 +21,9 @@ class UserInfoVC: UIViewController {
     private let itemBottomView = UIView()
     private let dateLabel = GFBodyLabel(textAlignment: .center, fontSize: 16, weight: .black)
     
-    
     public var username: String!
-
+    weak var delegate: FollowerListVCDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,10 +40,7 @@ class UserInfoVC: UIViewController {
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemMiddleView)
-                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemBottomView)
-                    self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+                    self.conigureUIElements(with: user)
                 }
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "Something went wrong!", body: error.rawValue, titleButton: "Ok")
@@ -46,7 +48,20 @@ class UserInfoVC: UIViewController {
         }
     }
     
-    func layoutUI() {
+    private func conigureUIElements(with user: User) {
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+        
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
+        
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        self.add(childVC: repoItemVC, to: self.itemMiddleView)
+        self.add(childVC: followerItemVC, to: self.itemBottomView)
+        self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+    }
+    
+    private func layoutUI() {
         itemsView = [headerView, itemMiddleView, itemBottomView, dateLabel]
         
         for itemView in itemsView {
@@ -74,7 +89,7 @@ class UserInfoVC: UIViewController {
         ])
     }
     
-    func add(childVC: UIViewController, to containerView: UIView) {
+    private func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
@@ -83,5 +98,25 @@ class UserInfoVC: UIViewController {
     
     @objc func dismssVC() {
         dismiss(animated: true)
+    }
+}
+
+extension UserInfoVC: UserInfoVCDelegate {
+    func didTapGitHubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMain(title: "Invalid URL", body: "The url attahed to this user is invalid", titleButton: "Ok")
+            return
+        }
+        presentSafaryVC(with: url)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        guard user.followers != 0 else {
+            presentGFAlertOnMain(title: "No followers", body: "This user has no followers. What a shame 😔", titleButton: "So sad")
+            return
+        }
+        
+        delegate.didRequestFollowers(for: user.login)
+        dismssVC()
     }
 }

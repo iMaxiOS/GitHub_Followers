@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
 class FallowerListVC: UIViewController {
     
     private var followers: [Follower] = []
@@ -136,6 +140,7 @@ extension FallowerListVC: UICollectionViewDelegate {
         
         let userInfoVC = UserInfoVC()
         userInfoVC.username = follower.login
+        userInfoVC.delegate = self
         let navController = UINavigationController(rootViewController: userInfoVC)
         present(navController, animated: true, completion: nil)
     }
@@ -153,5 +158,18 @@ extension FallowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: followers)
+    }
+}
+
+extension FallowerListVC: FollowerListVCDelegate {
+    
+    func didRequestFollowers(for username: String) {
+        self.userName = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollower.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: page)
     }
 }
