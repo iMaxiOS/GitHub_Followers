@@ -10,10 +10,12 @@ import UIKit
 
 class UserInfoVC: UIViewController {
     
+    private var itemsView: [UIView] = []
     private let headerView = UIView()
     private let itemMiddleView = UIView()
     private let itemBottomView = UIView()
-    private var itemsView: [UIView] = []
+    private let dateLabel = GFBodyLabel(textAlignment: .center, fontSize: 16, weight: .black)
+    
     
     public var username: String!
 
@@ -36,6 +38,7 @@ class UserInfoVC: UIViewController {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
                     self.add(childVC: GFRepoItemVC(user: user), to: self.itemMiddleView)
                     self.add(childVC: GFFollowerItemVC(user: user), to: self.itemBottomView)
+                    self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
                 }
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "Something went wrong!", body: error.rawValue, titleButton: "Ok")
@@ -44,29 +47,30 @@ class UserInfoVC: UIViewController {
     }
     
     func layoutUI() {
-        itemsView = [headerView, itemMiddleView, itemBottomView]
+        itemsView = [headerView, itemMiddleView, itemBottomView, dateLabel]
         
         for itemView in itemsView {
             view.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            ])
         }
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             headerView.heightAnchor.constraint(equalToConstant: 180),
             
             itemMiddleView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-            itemMiddleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            itemMiddleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             itemMiddleView.heightAnchor.constraint(equalToConstant: 140),
             
             itemBottomView.topAnchor.constraint(equalTo: itemMiddleView.bottomAnchor, constant: 20),
-            itemBottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            itemBottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            itemBottomView.heightAnchor.constraint(equalToConstant: 140)
+            itemBottomView.heightAnchor.constraint(equalToConstant: 140),
             
+            dateLabel.topAnchor.constraint(equalTo: itemBottomView.bottomAnchor, constant: 20),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
