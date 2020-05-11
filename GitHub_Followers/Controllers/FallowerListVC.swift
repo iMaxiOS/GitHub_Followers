@@ -54,6 +54,8 @@ class FallowerListVC: UIViewController {
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddButton))
     }
     
     private func createThreeColums() -> UICollectionViewFlowLayout {
@@ -120,6 +122,32 @@ class FallowerListVC: UIViewController {
                 self.presentGFAlertOnMain(title: "user name not found", body: error.rawValue, titleButton: "OK")
             }
         }
+    }
+    
+    @objc func handleAddButton() {
+        showLoadingView()
+        
+        NetworkManager.shared.getUserInfo(for: userName, completed: { [weak self] result in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            
+            switch result {
+            case .success(let user):
+                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                PersistenManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+                    guard let self = self else { return }
+                    guard let err = error else {
+                        self.presentGFAlertOnMain(title: "Success!", body: "You have successfully favorited this user 🎉", titleButton: "Uhhhy!")
+                        return
+                    }
+                
+                    self.presentGFAlertOnMain(title: "Something went wrong", body: err.rawValue, titleButton: "OK")
+                    
+                }
+            case .failure(let error):
+                self.presentGFAlertOnMain(title: "Something went wrong", body: error.rawValue, titleButton: "OK")
+            }
+        })
     }
 }
 

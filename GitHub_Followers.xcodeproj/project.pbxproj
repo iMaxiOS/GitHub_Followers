@@ -39,6 +39,7 @@
 		ACAA601C2461AFFC00395A45 /* GFHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601B2461AFFC00395A45 /* GFHStackView.swift */; };
 		ACAA601E2461B02000395A45 /* GFVStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601D2461B02000395A45 /* GFVStackView.swift */; };
 		ACAA60202461B80A00395A45 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */; };
+		ACE5CA2F2469595200CB4474 /* PersistenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CA2E2469595200CB4474 /* PersistenManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		ACAA601B2461AFFC00395A45 /* GFHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFHStackView.swift; sourceTree = "<group>"; };
 		ACAA601D2461B02000395A45 /* GFVStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFVStackView.swift; sourceTree = "<group>"; };
 		ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		ACE5CA2E2469595200CB4474 /* PersistenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				AC4873EF245AF1C600D56E65 /* NetworkManager.swift */,
+				ACE5CA2E2469595200CB4474 /* PersistenManager.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				ACAA60202461B80A00395A45 /* GFSecondaryTitleLabel.swift in Sources */,
 				ACAA601C2461AFFC00395A45 /* GFHStackView.swift in Sources */,
 				ACAA601E2461B02000395A45 /* GFVStackView.swift in Sources */,
+				ACE5CA2F2469595200CB4474 /* PersistenManager.swift in Sources */,
 				AC56CBD224642DF5001549B7 /* String+Ext.swift in Sources */,
 				ACAA60122461641E00395A45 /* GFEmptyUsersVC.swift in Sources */,
 				AC0A50732457535900751976 /* AppDelegate.swift in Sources */,
