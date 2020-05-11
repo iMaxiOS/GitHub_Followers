@@ -40,6 +40,7 @@
 		ACAA601E2461B02000395A45 /* GFVStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601D2461B02000395A45 /* GFVStackView.swift */; };
 		ACAA60202461B80A00395A45 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */; };
 		ACE5CA2F2469595200CB4474 /* PersistenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CA2E2469595200CB4474 /* PersistenManager.swift */; };
+		ACE5CA3124697F7000CB4474 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CA3024697F7000CB4474 /* FavoriteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		ACAA601D2461B02000395A45 /* GFVStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFVStackView.swift; sourceTree = "<group>"; };
 		ACAA601F2461B80A00395A45 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		ACE5CA2E2469595200CB4474 /* PersistenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenManager.swift; sourceTree = "<group>"; };
+		ACE5CA3024697F7000CB4474 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				AC08F508245C29570090DA88 /* FollowerCell.swift */,
+				ACE5CA3024697F7000CB4474 /* FavoriteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				AC8C85432459EF61005287A3 /* GFAlertVC.swift in Sources */,
 				AC56CBD024642DEB001549B7 /* Data+Ext.swift in Sources */,
 				ACAA601A2461AA7300395A45 /* GFUserInfoHeaderVC.swift in Sources */,
+				ACE5CA3124697F7000CB4474 /* FavoriteCell.swift in Sources */,
 				AC0E86832462F4EE00A28C26 /* GFRepoItemVC.swift in Sources */,
 				AC4873EB245AE9D200D56E65 /* Follower.swift in Sources */,
 				ACAA60202461B80A00395A45 /* GFSecondaryTitleLabel.swift in Sources */,
