@@ -1,27 +1,27 @@
 //
-//  GFImageView.swift
+//  GFAlertContainerView.swift
 //  GitHub_Followers
 //
-//  Created by Maxim Granchenko on 01.05.2020.
+//  Created by Maxim Granchenko on 12.05.2020.
 //  Copyright © 2020 Maxim Granchenko. All rights reserved.
 //
 
 import UIKit
 
-class GFImageView: UIImageView {
-    
-    private let placeholderImage = UIImage(named: "avatar-placeholder")
-    
+class GFAlertContainerView: UIView {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
     private func configure() {
-        layer.cornerRadius = 10
-        clipsToBounds = true
-        image = placeholderImage
+        layer.borderColor = UIColor.white.cgColor
+        backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds = true
+        layer.borderWidth = 2
+        layer.cornerRadius = 16
     }
     
     required init?(coder: NSCoder) {

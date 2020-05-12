@@ -10,7 +10,7 @@ import UIKit
 
 class GFAlertVC: UIViewController {
     
-    private let containerView = UIView()
+    private let containerView = GFAlertContainerView()
     private let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20, weight: .black)
     private let bodyLabel = GFBodyLabel(textAlignment: .center, fontSize: 16, weight: .medium)
     private let okButton = GFButton(bgColor: .systemPink, title: "Ok")
@@ -38,12 +38,6 @@ class GFAlertVC: UIViewController {
     
     private func configureContainerView() {
         view.addSubview(containerView)
-        containerView.layer.borderColor = UIColor.white.cgColor
-        containerView.backgroundColor = .systemBackground
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.clipsToBounds = true
-        containerView.layer.borderWidth = 2
-        containerView.layer.cornerRadius = 16
         
         containerView.addSubview(titleLabel)
         titleLabel.text = titleMessage ?? "Something went wrong"

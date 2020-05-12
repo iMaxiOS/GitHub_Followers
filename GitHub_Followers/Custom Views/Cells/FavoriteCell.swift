@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoriteCell: UITableViewCell {
-
+    
     static var cellId = "FavoriteCell"
     
     private let avatarImageView = GFImageView(frame: .zero)
@@ -24,13 +24,18 @@ class FavoriteCell: UITableViewCell {
     
     public func set(favorite: Follower) {
         nameLabel.text = favorite.login
-        avatarImageView.downloadImage(from: favorite.avatarUrl)
+        NetworkManager.shared.downloadedImage(with: favorite.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        }
     }
     
     private func configure() {
         addSubview(avatarImageView)
         addSubview(nameLabel)
-    
+        
         accessoryType = .disclosureIndicator
         selectionStyle = .none
         

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FavoritesListVC: UIViewController {
+class FavoritesListVC: GFDataLoadingVC {
     
-    private var favoriteTableView: UITableView!
+    private var favoriteTableView = UITableView()
     
     private var favorites: [Follower] = []
 
@@ -36,9 +36,8 @@ class FavoritesListVC: UIViewController {
     }
     
     private func configureTableView() {
-        favoriteTableView = UITableView(frame: view.bounds, style: .plain)
-        
         view.addSubview(favoriteTableView)
+        favoriteTableView.frame = view.bounds
         favoriteTableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.cellId)
         favoriteTableView.rowHeight = 80
         favoriteTableView.delegate = self
@@ -82,9 +81,7 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
-        let destVC = FallowerListVC()
-        destVC.title = favorite.login
-        destVC.userName = favorite.login
+        let destVC = FallowerListVC(username: favorite.login)
         
         navigationController?.pushViewController(destVC, animated: true)
     }
