@@ -51,7 +51,7 @@ class FallowerListVC: GFDataLoadingVC {
     
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColums())
-        view.addSubview(collectionView)
+        view.addSubviews(collectionView)
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.cellId)

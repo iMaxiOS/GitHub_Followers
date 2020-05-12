@@ -36,7 +36,7 @@ class FavoritesListVC: GFDataLoadingVC {
     }
     
     private func configureTableView() {
-        view.addSubview(favoriteTableView)
+        view.addSubviews(favoriteTableView)
         favoriteTableView.frame = view.bounds
         favoriteTableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.cellId)
         favoriteTableView.rowHeight = 80
@@ -55,6 +55,7 @@ class FavoritesListVC: GFDataLoadingVC {
                     self.favorites = favorites
                     DispatchQueue.main.async {
                         self.favoriteTableView.reloadData()
+                        self.view.bringSubviewToFront(self.favoriteTableView)
                     }
                 }
             case .failure(let error):

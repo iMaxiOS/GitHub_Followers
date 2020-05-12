@@ -45,7 +45,7 @@ class GFDataLoadingVC: UIViewController {
     public func showEmptyStateView(message: String, in view: UIView) {
         let emptyStateView = GFEmptyUsersVC(message: message)
         emptyStateView.frame = view.bounds
-        view.addSubview(emptyStateView)
+        view.addSubviews(emptyStateView)
     }
 
 }

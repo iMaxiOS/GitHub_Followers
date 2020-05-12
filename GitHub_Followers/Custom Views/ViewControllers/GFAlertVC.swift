@@ -37,16 +37,13 @@ class GFAlertVC: UIViewController {
     }
     
     private func configureContainerView() {
-        view.addSubview(containerView)
+        view.addSubviews(containerView, titleLabel, bodyLabel, okButton)
         
-        containerView.addSubview(titleLabel)
         titleLabel.text = titleMessage ?? "Something went wrong"
         
-        containerView.addSubview(bodyLabel)
         bodyLabel.text = bodyMessage ?? "Unable to complite request"
         bodyLabel.numberOfLines = 4
         
-        containerView.addSubview(okButton)
         okButton.setTitle(titleButton ?? "Ok", for: .normal)
         okButton.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
         

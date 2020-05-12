@@ -16,7 +16,6 @@ class GFItemInfoVC: UIViewController {
     public let actionButton = GFButton()
     
     public var user: User!
-    weak var delegate: UserInfoVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +46,7 @@ class GFItemInfoVC: UIViewController {
     @objc func handleActionButton() {}
     
     private func layoutUI() {
-        view.addSubview(vStackView)
-        view.addSubview(actionButton)
+        view.addSubviews(vStackView, actionButton)
         
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         

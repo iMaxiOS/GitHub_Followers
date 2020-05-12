@@ -37,9 +37,7 @@ class SearchVC: GFDataLoadingVC {
     }
     
     private func configure() {
-        view.addSubview(imageView)
-        view.addSubview(nameTextField)
-        view.addSubview(getButton)
+        view.addSubviews(imageView, nameTextField, getButton)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.delegate = self
     }

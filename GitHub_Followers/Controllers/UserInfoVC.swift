@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol UserInfoVCDelegate: class {
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
-}
-
 class UserInfoVC: UIViewController {
     
     private var itemsView: [UIView] = []
@@ -65,7 +60,7 @@ class UserInfoVC: UIViewController {
         itemsView = [headerView, itemMiddleView, itemBottomView, dateLabel]
         
         for itemView in itemsView {
-            view.addSubview(itemView)
+            view.addSubviews(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -101,21 +96,24 @@ class UserInfoVC: UIViewController {
     }
 }
 
-extension UserInfoVC: UserInfoVCDelegate {
+extension UserInfoVC: GFRepoItemVCDelegate {
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlertOnMain(title: "Invalid URL", body: "The url attahed to this user is invalid", titleButton: "Ok")
             return
         }
+        
         presentSafaryVC(with: url)
     }
-    
+}
+
+extension UserInfoVC: GFFollowerItemVCDelegate {
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {
             presentGFAlertOnMain(title: "No followers", body: "This user has no followers. What a shame 😔", titleButton: "So sad")
             return
         }
-        
+
         delegate.didRequestFollowers(for: user.login)
         dismssVC()
     }
