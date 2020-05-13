@@ -113,7 +113,9 @@ class FallowerListVC: GFDataLoadingVC {
             self.dismissLoadingView()
             switch result {
             case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollower = false }
+                if followers.count < 100 {
+                    self.hasMoreFollower = false
+                }
                 self.followers.append(contentsOf: followers)
                 
                 if followers.isEmpty {
@@ -143,17 +145,7 @@ class FallowerListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistenManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    guard let err = error else {
-                        self.presentGFAlertOnMain(title: "Success!", body: "You have successfully favorited this user 🎉", titleButton: "Uhhhy!")
-                        return
-                    }
-                
-                    self.presentGFAlertOnMain(title: "Something went wrong", body: err.rawValue, titleButton: "OK")
-                    
-                }
+                self.addUserToFavorites(user: user)
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "Something went wrong", body: error.rawValue, titleButton: "OK")
             }
@@ -162,6 +154,20 @@ class FallowerListVC: GFDataLoadingVC {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addUserToFavorites(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistenManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+            guard let self = self else { return }
+            guard let err = error else {
+                self.presentGFAlertOnMain(title: "Success!", body: "You have successfully favorited this user 🎉", titleButton: "Uhhhy!")
+                return
+            }
+        
+            self.presentGFAlertOnMain(title: "Something went wrong", body: err.rawValue, titleButton: "OK")
+            
+        }
     }
 }
 

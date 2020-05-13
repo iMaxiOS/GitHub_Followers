@@ -11,7 +11,6 @@ import UIKit
 class FavoritesListVC: GFDataLoadingVC {
     
     private var favoriteTableView = UITableView()
-    
     private var favorites: [Follower] = []
 
     override func viewDidLoad() {
@@ -50,17 +49,21 @@ class FavoritesListVC: GFDataLoadingVC {
             guard let self = self else { return }
             switch result {
             case .success(let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyStateView(message: "No Favorites?\nAdd one on the follower screen", in: self.view)
-                } else {
-                    self.favorites = favorites
-                    DispatchQueue.main.async {
-                        self.favoriteTableView.reloadData()
-                        self.view.bringSubviewToFront(self.favoriteTableView)
-                    }
-                }
+                self.updateUI(with: favorites)
             case .failure(let error):
                 self.presentGFAlertOnMain(title: "Something went wrong", body: error.rawValue, titleButton: "OK")
+            }
+        }
+    }
+    
+    private func updateUI(with favorites: [Follower]) {
+        if favorites.isEmpty {
+            self.showEmptyStateView(message: "No Favorites?\nAdd one on the follower screen", in: self.view)
+        } else {
+            self.favorites = favorites
+            DispatchQueue.main.async {
+                self.favoriteTableView.reloadData()
+                self.view.bringSubviewToFront(self.favoriteTableView)
             }
         }
     }

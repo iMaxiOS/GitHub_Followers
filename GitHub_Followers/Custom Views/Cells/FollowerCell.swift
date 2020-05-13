@@ -34,10 +34,6 @@ class FollowerCell: UICollectionViewCell {
         }
     }
     
-    private func downloadAvatarImageView() {
-        
-    }
-    
     private func configure() {
         addSubview(avatarImageView)
         addSubview(nameLabel)

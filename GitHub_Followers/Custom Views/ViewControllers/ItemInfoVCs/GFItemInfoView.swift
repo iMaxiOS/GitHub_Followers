@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum itemInfoType {
+enum ItemInfoType {
     case repos, gists, followers, following
 }
 
@@ -54,7 +54,7 @@ class GFItemInfoView: UIView {
         ])
     }
     
-    public func set(items: itemInfoType, count: Int) {
+    public func set(items: ItemInfoType, count: Int) {
         switch items {
         case .repos:
             symbolImageView.image = UIImage(systemName: "folder")

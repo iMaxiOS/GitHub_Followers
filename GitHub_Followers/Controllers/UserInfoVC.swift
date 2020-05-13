@@ -71,7 +71,7 @@ class UserInfoVC: UIViewController {
         conteinerView.pinToEdges(of: scrollView)
         
         NSLayoutConstraint.activate([
-            conteinerView.heightAnchor.constraint(equalToConstant: DeviceTypes.isiPhoneSE ? 600 : 0),
+            conteinerView.heightAnchor.constraint(equalToConstant: 600),
             conteinerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }

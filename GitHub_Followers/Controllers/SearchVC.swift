@@ -14,8 +14,6 @@ class SearchVC: GFDataLoadingVC {
     private let nameTextField = GFTextField()
     private let getButton = GFButton(bgColor: .systemGreen, title: "Get Followers")
     
-    private var topImageLogoConstraints: NSLayoutConstraint!
-    
     private var isUsernameEntered: Bool {
         return nameTextField.text?.isEmpty ?? false
     }
@@ -65,13 +63,10 @@ class SearchVC: GFDataLoadingVC {
     }
     
     private func addConstraints() {
-        
         let topLogoConstraints: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50 : 80
-
-        topImageLogoConstraints = imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topLogoConstraints)
-        topImageLogoConstraints.isActive = true
         
         NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topLogoConstraints),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: view.frame.width * 0.5),
             imageView.heightAnchor.constraint(equalToConstant: view.frame.width * 0.5),
