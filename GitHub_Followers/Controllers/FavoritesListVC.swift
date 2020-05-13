@@ -38,10 +38,11 @@ class FavoritesListVC: GFDataLoadingVC {
     private func configureTableView() {
         view.addSubviews(favoriteTableView)
         favoriteTableView.frame = view.bounds
-        favoriteTableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.cellId)
+        favoriteTableView.removeSeparator()
         favoriteTableView.rowHeight = 80
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
+        favoriteTableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.cellId)
     }
     
     private func getFavorite() {
@@ -89,13 +90,14 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        let favorite = favorites[indexPath.row]
-        favorites.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
         
-        PersistenManager.updateWith(favorite: favorite, actionType: .remove) { [weak self] error in
+        PersistenManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
             guard let self = self else { return }
-            guard let err = error else { return }
+            guard let err = error else {
+                self.favorites.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                return
+            }
             self.presentGFAlertOnMain(title: "Unable to remove", body: err.rawValue, titleButton: "OK")
         }
     }

@@ -31,7 +31,6 @@ class UserInfoVC: UIViewController {
         
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
