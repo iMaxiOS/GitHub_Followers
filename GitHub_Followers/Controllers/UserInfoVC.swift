@@ -10,6 +10,9 @@ import UIKit
 
 class UserInfoVC: UIViewController {
     
+    private let scrollView = UIScrollView()
+    private let conteinerView = UIView()
+    
     private var itemsView: [UIView] = []
     private let headerView = UIView()
     private let itemMiddleView = UIView()
@@ -21,14 +24,20 @@ class UserInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureViewController()
+        configureScrollView()
+        layoutUI()
+        getUser()
+    }
+    
+    private func configureViewController() {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismssVC))
         doneButton.tintColor = .systemGreen
         navigationItem.rightBarButtonItem = doneButton
-        
-        layoutUI()
-        
+    }
+    
+    private func getUser() {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -55,21 +64,33 @@ class UserInfoVC: UIViewController {
         self.dateLabel.text = "GitHub since \(user.createdAt.convertToMonthYearFormat())"
     }
     
+    private func configureScrollView() {
+        view.addSubviews(scrollView)
+        scrollView.addSubviews(conteinerView)
+        scrollView.pinToEdges(of: view)
+        conteinerView.pinToEdges(of: scrollView)
+        
+        NSLayoutConstraint.activate([
+            conteinerView.heightAnchor.constraint(equalToConstant: DeviceTypes.isiPhoneSE ? 600 : 0),
+            conteinerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+    
     private func layoutUI() {
         itemsView = [headerView, itemMiddleView, itemBottomView, dateLabel]
         
         for itemView in itemsView {
-            view.addSubviews(itemView)
+            conteinerView.addSubviews(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+                itemView.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 20),
+                itemView.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -20)
             ])
         }
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.topAnchor.constraint(equalTo: conteinerView.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
             
             itemMiddleView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
